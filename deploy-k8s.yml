@@ -1,0 +1,12 @@
+- name: Deploy ABC App on Kubernetes
+  hosts: localhost
+  tasks:
+    - name: Apply Deployment manifest
+      kubernetes.core.k8s:
+        state: present
+        src: "{{ playbook_dir }}/deployment.yml"
+
+    - name: Apply Service manifest
+      kubernetes.core.k8s:
+        state: present
+        src: "{{ playbook_dir }}/service.yml"
