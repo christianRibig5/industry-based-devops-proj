@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: abctech-deployment
+  namespace: default
+  labels:
+    app: abctech
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: abctech
+  template:
+    metadata:
+      labels:
+        app: abctech
+    spec:
+      containers:
+        - name: abctech-container
+          image: abctech-app:latest  # use registry path if pushing to DockerHub
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: IfNotPresent
+

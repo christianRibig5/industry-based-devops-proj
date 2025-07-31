@@ -1,0 +1,17 @@
+- name: Deploy ABC App on Kubernetes
+  hosts: localhost
+  tasks:
+    - name: Apply Deployment manifest
+      kubernetes.core.k8s:
+        state: present
+        src: "{{ playbook_dir }}/deployment.yml"
+        kubeconfig: /home/ubuntu/.kube/config
+        namespace: default
+
+    - name: Apply Service manifest
+      kubernetes.core.k8s:
+        state: present
+        src: "{{ playbook_dir }}/service.yml"
+        kubeconfig: /home/ubuntu/.kube/config
+        namespace: default
+
