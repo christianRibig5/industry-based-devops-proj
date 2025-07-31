@@ -1,0 +1,19 @@
+---
+- name: Deploy ABC app to Docker
+  hosts: localhost
+  tasks:
+    - name: Build Docker image
+      community.docker.docker_image:
+        name: abctech-app
+        build:
+          path: "{{ playbook_dir }}"
+        source: build
+
+    - name: Run Docker container
+      community.docker.docker_container:
+        name: abctech-container
+        image: abctech-app
+        state: started
+        ports:
+          - "8181:8080"
+
