@@ -4,12 +4,12 @@ FROM tomcat:9.0
 # Clean default webapps
 RUN rm -rf /usr/local/tomcat/webapps/*
 
-# Copy WAR file to Tomcat
+# Copy your WAR file into the ROOT of Tomcat
 COPY target/ABCtechnologies-1.0.war /usr/local/tomcat/webapps/ROOT.war
 
-# Expose default Tomcat port
+# Expose Tomcat port
 EXPOSE 8080
 
-# Start Tomcat
+# Start Tomcat server
 CMD ["catalina.sh", "run"]
 

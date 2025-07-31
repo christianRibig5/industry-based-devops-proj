@@ -7,6 +7,7 @@ spec:
   selector:
     app: abctech
   ports:
-    - port: 80          # External service port
-      targetPort: 8080  # Container port (Tomcat)
-      nodePort: 30080   # Optional fixed NodePort
+    - port: 80           # Port to expose the service on (inside the cluster)
+      targetPort: 8080   # The port your Tomcat container listens on
+      nodePort: 30080    # Exposes service on <NodeIP>:30080 externally
+

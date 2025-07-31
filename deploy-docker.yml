@@ -1,19 +1,34 @@
 ---
-- name: Deploy ABC app to Docker
+- name: Deploy ABCtechnologies WAR App to Docker
   hosts: localhost
+  vars:
+    app_name: abctech
+    image_name: "{{ app_name }}-app"
+    container_name: "{{ app_name }}-container"
+    host_port: 8181
+    container_port: 8080
+
   tasks:
-    - name: Build Docker image
+    - name: Build Docker image from current directory
       community.docker.docker_image:
-        name: abctech-app
+        name: "{{ image_name }}"
+        tag: latest
         build:
           path: "{{ playbook_dir }}"
         source: build
+        force_source: true  # forces rebuild
 
-    - name: Run Docker container
+    - name: Remove existing container if exists
       community.docker.docker_container:
-        name: abctech-container
-        image: abctech-app
-        state: started
-        ports:
-          - "8181:8080"
+        name: "{{ container_name }}"
+        state: absent
+      ignore_errors: true
 
+    - name: Run Docker container from built image
+      community.docker.docker_container:
+        name: "{{ container_name }}"
+        image: "{{ image_name }}"
+        state: started
+        restart_policy: always
+        ports:
+          - "{{ host_port }}:{{ container_port }}"

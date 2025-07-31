@@ -16,6 +16,8 @@ spec:
     spec:
       containers:
         - name: abctech-container
-          image: abctech-app:latest  # or use your DockerHub/ECR path
+          image: abctech-app:latest  # use registry path if pushing to DockerHub
           ports:
             - containerPort: 8080
+          imagePullPolicy: IfNotPresent
+
