@@ -36,12 +36,7 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                sh '''
-		echo "Current Dir: $(pwd)"
-		echo "Available files:"
-		ls -la
-                ansible-playbook -i inventory.ini ${WORKSPACE}/deploy-k8s.yml
-                '''
+		sh 'export K8S_AUTH_KUBECONFIG=/home/ubuntu/.kube/config && ansible-playbook -i inventory.ini deploy-k8s.yml'
             }
         }
     }
