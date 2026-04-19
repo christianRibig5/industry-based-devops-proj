@@ -11,11 +11,11 @@ RUN mvn clean package -DskipTests
 # Stage 2: Deploy to tomcat
 FROM tomcat:9.0-jdk21-temurin
 
+# create a user and group to run app instead of root for security purpose 
 ENV APPUSER=appuser
 ENV APPUID=2000
 ENV APPGID=2000
 
-# create a user and group and add user and group to run app for security purpose
 RUN  groupadd -g ${APPGID} ${APPUSER} && \
     useradd -m -u ${APPUID} -g ${APPGID} -s /bin/sh ${APPUSER}
 
