@@ -27,4 +27,4 @@ target/
 # Temp / backup
 *.bak
 *.tmp
-*.pid
+*.pid**/.terraform/
