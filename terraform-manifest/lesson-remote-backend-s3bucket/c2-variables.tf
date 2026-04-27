@@ -20,11 +20,10 @@ variable "tags" {
   description = "Global tags to apply to all resources"
   type        = map(string)
   default = {
-    Terraform   = "true"
-    Owner       = "Christian Onyeukwu"
-    Project     = "Remote Backend for devops projects"
-    Purpose     = "terraform backend"
-    Environment = var.environment_name
+    Terraform = "true"
+    Owner     = "Christian Onyeukwu"
+    Project   = "Remote Backend for devops projects"
+    Purpose   = "terraform backend"
   }
 }
 

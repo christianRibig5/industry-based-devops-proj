@@ -11,7 +11,7 @@ resource "aws_s3_bucket" "tfstate_bucket" {
   lifecycle {
     prevent_destroy = false
   }
-  tags = merge(var.tags, { Name = "tfstate${var.environment_name}-${var.aws_region}" })
+  tags = merge(var.tags, { Name = "tfstate-${var.environment_name}-${var.aws_region}" })
 }
 
 resource "aws_s3_bucket_versioning" "tfstate_versioning" {
