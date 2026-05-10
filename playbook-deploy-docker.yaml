@@ -1,4 +1,3 @@
----
 - name: Deploy ABCtechnologies WAR App to Docker
   hosts: localhost
   vars:
@@ -16,7 +15,7 @@
         build:
           path: "{{ playbook_dir }}"
         source: build
-        force_source: true  # forces rebuild
+        force_source: true # forces rebuild
 
     - name: Remove existing container if exists
       community.docker.docker_container:
