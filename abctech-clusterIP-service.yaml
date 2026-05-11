@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: abctech-service
+  labels:
+    app.kubernetes.io/name: abctech
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: abctech
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+      protocol: TCP
