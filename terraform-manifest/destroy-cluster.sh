@@ -5,6 +5,7 @@ echo "==============================="
 echo "STEP-1: Destroy EKS Cluster"
 echo "==============================="
 cd eks-cluster
+terraform init -reconfigure
 terraform plan -destroy
 terraform destroy -auto-approve
 
@@ -17,6 +18,7 @@ echo "==============================="
 echo "STEP-2: Destroy VPC"
 echo "==============================="
 cd ../vpc
+terraform init -reconfigure
 terraform plan -destroy
 terraform destroy -auto-approve
 

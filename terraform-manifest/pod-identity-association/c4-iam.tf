@@ -32,7 +32,7 @@ resource "aws_iam_policy" "s3_policy" {
         Action = [
           "s3:ListBucket"
         ]
-        Resource = data.terraform_remote_state.app_bucket.outputs.app_bucket_arn
+        Resource = data.terraform_remote_state.app_bucket.outputs.s3_bucket_arn
       },
       {
         Effect = "Allow"
@@ -40,7 +40,7 @@ resource "aws_iam_policy" "s3_policy" {
           "s3:GetObject",
           "s3:PutObject"
         ]
-        Resource = "${data.terraform_remote_state.app_bucket.outputs.app_bucket_arn}/*"
+        Resource = "${data.terraform_remote_state.app_bucket.outputs.s3_bucket_arn}/*"
       }
     ]
   })

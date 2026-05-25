@@ -4,7 +4,7 @@ data "terraform_remote_state" "app_bucket" {
 
   config = {
     bucket = "tfstate-dev-ca-central-1-mr67svo6"
-    key    = "s3/devops-apps/dev/terraform.tfstate"
+    key    = "s3/devops-apps-bucket/dev/terraform.tfstate"
     region = "ca-central-1"
   }
 }
