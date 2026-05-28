@@ -20,15 +20,6 @@ terraform validate
 terraform plan
 terraform apply -auto-approve
 
-echo
-echo "=========================================================="
-echo "STEP-3: Create Pod Identity Association  using Terraform"
-echo "=========================================================="
-cd ../pod-identity-association
-terraform init 
-terraform validate
-terraform plan
-terraform apply -auto-approve
 
 echo
-echo "✅ Pod Identity creation completed successfully!"
+echo "✅ Pod Identity Agent creation completed successfully!"
