@@ -13,7 +13,7 @@ variable "aws_region" {
 variable "awscli_user_profile" {
   description = "AWS Profile Owner running the resources"
   type        = string
-  default     = "devops"
+  default     = "dev-admin"
 }
 
 #-----------------------------------------------------------------
