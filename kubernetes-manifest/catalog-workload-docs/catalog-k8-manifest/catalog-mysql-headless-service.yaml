@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: catalog-mysql
   labels:
-    app.kubernetes.io/name: catalog
+    app.kubernetes.io/name: catalog-mysql
     app.kubernetes.io/instance: catalog
     app.kubernetes.io/component: mysql
     app.kubernetes.io/owner: retail-store-sample
@@ -14,7 +14,7 @@ spec:
       targetPort: mysql
       name: mysql
   selector:
-    app.kubernetes.io/name: catalog
+    app.kubernetes.io/name: catalog-mysql
     app.kubernetes.io/instance: catalog
     app.kubernetes.io/component: mysql
     app.kubernetes.io/owner: retail-store-sample

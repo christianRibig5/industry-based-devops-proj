@@ -42,7 +42,7 @@ variable "business_division" {
 variable "cluster_name" {
   description = "Name of the EKS Cluster. Also used as a prefix in name of the related resources"
   type        = string
-  default     = "eksdemo"
+  default     = "eksjalexsol"
 }
 
 variable "cluster_version" {
