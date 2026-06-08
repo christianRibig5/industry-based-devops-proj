@@ -9,27 +9,16 @@ variable "awscli_user_profile" {
   type        = string
   default     = "dev-admin"
 }
-variable "cluster_name" {
-  default = "your-existing-eks-cluster-name"
-}
-
-variable "namespace" {
-  default = "default"
-}
-
-variable "service_account_name" {
-  default = "s3-app-sa"
-}
-
-variable "bucket_name" {
-  default = "your-real-application-s3-bucket-name"
-
-}
 
 variable "environment_name" {
   description = "Environment name used in resource names and tags"
   type        = string
   default     = "dev"
+}
+variable "addon_version" {
+  description = "EBS CSI Driver version"
+  type        = string
+  default     = null
 }
 
 variable "tags" {

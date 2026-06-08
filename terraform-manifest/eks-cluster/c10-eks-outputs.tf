@@ -71,3 +71,15 @@ output "to_configure_kubectl" {
   description = "Command to update local kubeconfig to connect to the EKS cluster"
   value       = "aws eks --region ${var.aws_region} update-kubeconfig --name ${local.eks_cluster_name}"
 }
+
+# ==========================================================
+# Output EKS Cluster Security Group ID
+# Used by RDS MySQL to allow traffic from EKS workloads
+# when no custom node security group is created
+# ==========================================================
+
+output "eks_cluster_security_group_id" {
+  description = "Security Group ID created/used by the EKS cluster"
+
+  value = aws_eks_cluster.main.vpc_config[0].cluster_security_group_id
+}

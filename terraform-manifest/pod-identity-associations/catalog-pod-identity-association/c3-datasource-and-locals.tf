@@ -1,15 +1,4 @@
 
-data "terraform_remote_state" "app_bucket" {
-  backend = "s3"
-
-  config = {
-    bucket = "tfstate-dev-ca-central-1-mr67svo6"
-    key    = "s3/devops-apps-bucket/dev/terraform.tfstate"
-    region = "ca-central-1"
-  }
-}
-
-
 data "terraform_remote_state" "eks" {
   backend = "s3"
 
