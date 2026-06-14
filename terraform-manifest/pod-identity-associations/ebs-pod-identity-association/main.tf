@@ -9,7 +9,7 @@ module "catalog_pod_identity" {
       service_account_name = "ebs-csi-controller-sa"
     }
   }
-
+  policy_json      = file("${path.module}/../../iam-policy-json-files/ebs-driver-trust-policy.json")
   environment_name = var.environment_name
   tags             = var.tags
 }

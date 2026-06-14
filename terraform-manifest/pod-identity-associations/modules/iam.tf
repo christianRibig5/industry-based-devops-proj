@@ -34,22 +34,7 @@ resource "aws_iam_policy" "pod_policy" {
 
   name = "${var.cluster_name}-${each.value.service_account_name}-policy"
 
-  policy = jsonencode({
-    Version = "2012-10-17"
-
-    Statement = [
-      {
-        Effect = "Allow"
-
-        Action = [
-          "secretsmanager:GetSecretValue",
-          "secretsmanager:DescribeSecret"
-        ]
-
-        Resource = "*"
-      }
-    ]
-  })
+  policy = var.policy_json
 
   tags = merge(var.tags, {
     Name        = "${var.cluster_name}-${each.value.service_account_name}-policy"

@@ -16,6 +16,11 @@ variable "environment_name" {
   default     = "dev"
 }
 
+variable "policy_json" {
+  type        = string
+  description = "IAM trust policy for pod identity roleß"
+}
+
 variable "tags" {
   description = "Global tags to apply to all resources"
   type        = map(string)

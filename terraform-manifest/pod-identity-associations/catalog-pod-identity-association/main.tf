@@ -9,6 +9,7 @@ module "catalog_pod_identity" {
       service_account_name = "catalog-mysql-sa"
     }
   }
+  policy_json = file("${path.path.module}/../../iam-policy-json-files/catalog-trust-policy.json")
 
   environment_name = var.environment_name
   tags             = var.tags
