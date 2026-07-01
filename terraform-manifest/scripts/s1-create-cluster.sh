@@ -4,7 +4,7 @@ set -e
 echo "==============================="
 echo "STEP-1: Create VPC using Terraform"
 echo "==============================="
-cd vpc
+cd ../vpc
 terraform init 
 terraform validate
 terraform plan

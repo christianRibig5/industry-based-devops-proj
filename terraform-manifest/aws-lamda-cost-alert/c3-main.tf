@@ -15,53 +15,14 @@ resource "aws_sns_topic_subscription" "email_subscription" {
 }
 
 resource "aws_iam_role" "lambda_role" {
-  name = "aws-cost-alert-lambda-role"
-
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Effect = "Allow"
-        Principal = {
-          Service = "lambda.amazonaws.com"
-        }
-        Action = "sts:AssumeRole"
-      }
-    ]
-  })
+  name               = "aws-cost-alert-lambda-role"
+  assume_role_policy = file("${path.module}/../iam-policy-json-files/lambda-cost-alert-trust-policy.json")
 }
 
 resource "aws_iam_policy" "lambda_policy" {
-  name = "aws-cost-alert-lambda-policy"
+  name   = "aws-cost-alert-lambda-policy"
+  policy = file("${path.module}/../iam-policy-json-files/lambda-cost-alert-permission-policy.json")
 
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Effect = "Allow"
-        Action = [
-          "ce:GetCostAndUsage"
-        ]
-        Resource = "*"
-      },
-      {
-        Effect = "Allow"
-        Action = [
-          "sns:Publish"
-        ]
-        Resource = aws_sns_topic.cost_alert_topic.arn
-      },
-      {
-        Effect = "Allow"
-        Action = [
-          "logs:CreateLogGroup",
-          "logs:CreateLogStream",
-          "logs:PutLogEvents"
-        ]
-        Resource = "*"
-      }
-    ]
-  })
 }
 
 resource "aws_iam_role_policy_attachment" "lambda_policy_attach" {

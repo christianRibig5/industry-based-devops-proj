@@ -4,7 +4,7 @@ set -e
 echo "==============================="
 echo "STEP-1: Destroy EKS Cluster"
 echo "==============================="
-cd eks-cluster
+cd ../eks-cluster
 terraform init -reconfigure
 terraform plan -destroy
 terraform destroy -auto-approve

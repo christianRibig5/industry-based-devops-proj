@@ -13,8 +13,9 @@ resource "aws_secretsmanager_secret" "catalog_db_secret" {
   tags = var.tags
 }
 resource "random_password" "catalog_db_password" {
-  length  = 20
-  special = true
+  length           = 20
+  special          = true
+  override_special = "!#$%&*()-_=+[]{}<>:?"
 }
 
 resource "aws_secretsmanager_secret_version" "catalog_db_secret_version" {

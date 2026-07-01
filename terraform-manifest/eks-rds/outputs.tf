@@ -7,7 +7,8 @@ output "catalog_rds_port" {
 }
 
 output "catalog_rds_database_name" {
-  value = aws_db_instance.catalog_mysql.db_name
+  value     = aws_db_instance.catalog_mysql.db_name
+  sensitive = true
 }
 
 output "catalog_rds_security_group_id" {
