@@ -29,14 +29,14 @@ resource "aws_eks_node_group" "private_nodes" {
 
   # Configure auto-scaling limits and defaults
   scaling_config {
-    # Desired number of nodes when the node group is created
-    desired_size = 3
+    # Number of nodes Terraform should create/maintain for the node group
+    desired_size = var.node_desired_size
 
-    # Minimum number of nodes allowed
-    min_size = 1
+    # Minimum number of nodes allowed in the node group
+    min_size = var.node_min_size
 
-    # Maximum number of nodes the group can scale to
-    max_size = 6
+    # Maximum number of nodes allowed in the node group
+    max_size = var.node_max_size
   }
 
   # Set the max percentage of nodes that can be unavailable during update

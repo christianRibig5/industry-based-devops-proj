@@ -17,3 +17,6 @@ cluster_endpoint_public_access_cidrs = ["0.0.0.0/0"]
 node_instance_types = ["t3.small"] # Replace with desired types
 node_capacity_type  = "ON_DEMAND"  # or "SPOT"
 node_disk_size      = 20
+node_desired_size   = 4
+node_min_size       = 3
+node_max_size       = 6

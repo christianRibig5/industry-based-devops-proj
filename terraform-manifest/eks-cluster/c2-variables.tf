@@ -119,4 +119,27 @@ variable "node_disk_size" {
   type        = number
   default     = 20
 }
+# Desired number of worker nodes to run in the EKS node group
+# This is the target node count Terraform will try to maintain
+variable "node_desired_size" {
+  description = "Desired number of worker nodes in the EKS node group"
+  type        = number
+  default     = 3
+}
+
+# Minimum number of worker nodes the node group is allowed to scale down to
+# Keep this at 3 for this lab so core workloads can still schedule
+variable "node_min_size" {
+  description = "Minimum number of worker nodes in the EKS node group"
+  type        = number
+  default     = 1
+}
+
+# Maximum number of worker nodes the node group can scale up to
+# Leave some headroom above desired size for temporary scaling if needed
+variable "node_max_size" {
+  description = "Maximum number of worker nodes in the EKS node group"
+  type        = number
+  default     = 6
+}
 

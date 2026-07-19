@@ -60,3 +60,25 @@ kubectl delete pod -n catalog --all
 
 # 17. Watch pod become Running
 kubectl get pods -n catalog -w
+
+# 18. Create certificate for ingress ip mode
+aws acm request-certificate \
+  --domain-name www.christianonyeukwu.com \
+  --validation-method DNS \
+  --region ca-central-1
+
+  #19. Wildcart request 
+  aws acm request-certificate \
+  --domain-name "*.vgc247.com" \
+  --subject-alternative-names "vgc247.com" \
+  --validation-method DNS \
+  --region ca-central-1
+
+
+
+# 20 Check aws certification staus
+aws acm describe-certificate \
+  --certificate-arn arn:aws:acm:ca-central-1:247332613204:certificate/e4d7b05b-c582-4139-9500-fe2f872a6572 \
+  --region ca-central-1
+
+ 
