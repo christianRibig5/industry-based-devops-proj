@@ -7,7 +7,7 @@ replicaCount: 1
 image:
   repository: public.ecr.aws/aws-containers/retail-store-sample-ui
   pullPolicy: IfNotPresent
-  tag: 1.3.0
+  tag: 
 
 imagePullSecrets: []
 nameOverride: ""
@@ -119,7 +119,8 @@ ingresses: []
   #   annotations: {}
   #   tls: []
 
-ingresses: []
+ingresses:
+  []
   # - name: default
   #   className: ""
   #   hosts: []
@@ -138,9 +139,3 @@ podDisruptionBudget:
   enabled: false
   minAvailable: 2
   maxUnavailable: 1
-
-releaseInfo:
-  enabled: true
-  author: "Christian"
-  environment: "dev-admin"
-  version: "1.3.1"
